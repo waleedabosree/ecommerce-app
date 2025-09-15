@@ -24,6 +24,7 @@ export function Navbar() {
     <NavigationMenuItem> <Link href="/">Home</Link> </NavigationMenuItem>
     <NavigationMenuItem> <Link href="/products">Products</Link> </NavigationMenuItem>
     <NavigationMenuItem> <Link href="/cart">Cart</Link> </NavigationMenuItem>
+    <NavigationMenuItem> <Link href="/brands">Brands</Link> </NavigationMenuItem>
     <NavigationMenuItem> <Link href="/cat">Categories</Link> </NavigationMenuItem>
   </NavigationMenuList>
 

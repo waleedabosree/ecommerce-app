@@ -1,18 +1,17 @@
+'use client'
 import Link from "next/link"
 import {
   NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu"
 
 import { ShoppingCart } from 'lucide-react';
 import { Heart } from 'lucide-react';
+import { signOut, useSession } from "next-auth/react";
 export function Navbar() {
+  const session = useSession();
+  console.log("Session data in Navbar:", session);
   return (
     <div>
    <NavigationMenu className="text-md max-w-7xl p-5 flex justify-between items-center">
@@ -31,6 +30,15 @@ export function Navbar() {
    <NavigationMenuList className="font-bold gap-5">
     <NavigationMenuItem> <button> <ShoppingCart></ShoppingCart> </button> </NavigationMenuItem>
     <NavigationMenuItem> <button> <Heart></Heart> </button> </NavigationMenuItem>
+    {session?.data ? 
+    <NavigationMenuItem> <Link href="/logout" onClick={() => signOut({callbackUrl:"/login"})}>Logout</Link> </NavigationMenuItem>
+    : 
+    <>
+    <NavigationMenuItem> <Link href="/login">Login</Link> </NavigationMenuItem>
+    <NavigationMenuItem> <Link href="/register">Register</Link> </NavigationMenuItem>
+    </>
+
+    }
   </NavigationMenuList>
 
 </NavigationMenu>

@@ -33,6 +33,7 @@ export default function MainSlider() {
               alt="slider-images"
               fill
               priority
+              loading='eager'
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
               className="object-cover"
             />
@@ -55,6 +56,7 @@ export default function MainSlider() {
               alt="slider-images"
               fill
               priority
+              loading='eager'
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
               className="object-cover"
             />
@@ -77,6 +79,7 @@ export default function MainSlider() {
               alt="slider-images"
               fill
               priority
+              loading='eager'
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
               className="object-cover"
             />

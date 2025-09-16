@@ -1,7 +1,7 @@
 export default function BrandPage() {
   return (
     <div>
-        BrandPage
+       <h2>Hello from</h2>
     </div>
   );
 }

@@ -1,7 +1,10 @@
 import MainSlider from "@/components/slider-comps/MainSlider";
-import Image from "next/image";
+import { getServerSession } from "next-auth";
+import { options } from "./api/auth/[...nextauth]/route";
 
-export default function Home() {
+export default async function Home() {
+  // const session = await getServerSession(options); 
+  // console.log("Session:", session);
   return (
    <div>
     <MainSlider></MainSlider>

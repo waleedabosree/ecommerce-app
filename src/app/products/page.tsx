@@ -1,7 +1,10 @@
-export default function ProductPage() {
+import React from 'react'
+import { getProducts } from '../actions/products.action'
+export default async function ProductPage() {
+  const productsResult = await getProducts();
   return (
     <div>
-        ProductPage
+        <ProductsGridSystem products={products}/>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+  import React from 'react'
   import { Catagories } from '@/app/types/catagory.modle'
   import { Swiper, SwiperSlide } from 'swiper/react'
   
@@ -10,21 +10,21 @@ import React from 'react'
   import 'swiper/css/pagination'
   
   import Image from 'next/image'
-import {Navigation,Pagination } from 'swiper/modules'
-export default function CatSliderComp({catagory}: {catagory:Catagories[]}) {
+  import {Navigation,Pagination } from 'swiper/modules'
+export default function CatSliderComp({category}: {category:Catagories[]}) {
 
   return (
     <div className='container mx-auto'>
       <h2 className='text-start text-3xl my-5'>Catagory slider</h2>
       <Swiper
-      slidesPerView={3}
+        slidesPerView={3}
         spaceBetween={3}
         navigation={true}
         pagination={{ clickable: true }}
         modules={[ Navigation, Pagination]}
         className="mySwiper"
       >
-        {catagory.map((cat)=><>
+        {category.map((cat)=><>
            <SwiperSlide key={cat._id}>
           <div className="relative h-[250px] w-full">
             <Image

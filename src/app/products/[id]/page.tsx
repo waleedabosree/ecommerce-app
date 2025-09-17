@@ -1,8 +1,16 @@
+import ProductDetailsComp from '@/components/products.comps/ProductDetailsComp';
 import React from 'react'
 
-export default function ProductDetails() {
+export default async function ProductDetails({pramas}:{params:{id:string}}) {
+    const {id}= await pramas;
+    console.log(id,"details")
+    const {data:ProductDetails} = await getProductsDetails(id); 
+    console.log(ProductDetails,"details")
+
   return (
-    <div>ProductDetails</div>
+    <div className='container mx-auto py-10'>
+        <ProductDetailsComp productDetails={ProductDetails}/>
+        </div>
   )
 }
 

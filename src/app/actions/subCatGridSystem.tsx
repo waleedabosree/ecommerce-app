@@ -1,6 +1,6 @@
 import React from 'react'
 import { Catagory } from '@/app/types/catagory.model'
-import SubCatCard from './subCatCard'
+import SubCatCard from '../../components/cat.comps/subCatCard'
 export default function SubCatGridSystem({ catagories }: { catagories: Catagory[] }) {
   return (
     <div className="container mx-auto">

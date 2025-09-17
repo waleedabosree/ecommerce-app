@@ -1,5 +1,5 @@
 import { Catagories } from './catagory.modle';
-export interface Products{
+export interface Product{
     sold:number,
     images:string[],
     subcategory:cat[],

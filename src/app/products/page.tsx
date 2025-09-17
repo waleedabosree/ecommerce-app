@@ -1,10 +1,16 @@
+
 import React from 'react'
-import { getProducts } from '../actions/products.action'
+import { getProducts } from '../actions/product.action'
+import ProductsGridSystem from '@/components/products.comps/ProductsGridSystem'
+
 export default async function ProductPage() {
-  const productsResult = await getProducts();
+  const response = await getProducts()
+  const products = response?.data || []
+  debugger;
   return (
     <div>
-        <ProductsGridSystem products={products}/>
+      <ProductsGridSystem products={products} />
     </div>
-  );
+  )
 }
+

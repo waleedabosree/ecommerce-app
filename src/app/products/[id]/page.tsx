@@ -1,10 +1,11 @@
+import { getProductsDetails } from '@/app/actions/product.action';
 import ProductDetailsComp from '@/components/products.comps/ProductDetailsComp';
 import React from 'react'
 
-export default async function ProductDetails({pramas}:{params:{id:string}}) {
-    const {id}= await pramas;
+export default async function ProductDetails({params}:{params:{id:string}}) {
+    const {id}= await params;
     console.log(id,"details")
-    const {data:ProductDetails} = await getProductsDetails(id); 
+    const {data:ProductDetails} = await getProductsDetails(id) || {};
     console.log(ProductDetails,"details")
 
   return (
@@ -13,5 +14,6 @@ export default async function ProductDetails({pramas}:{params:{id:string}}) {
         </div>
   )
 }
+
 
 

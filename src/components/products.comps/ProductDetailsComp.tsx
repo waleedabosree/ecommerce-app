@@ -1,8 +1,9 @@
 "use client"
+import { ProductDetails } from '@/app/types/productDetails.model'
 import React from 'react'
 import { StarRating } from 'react-flexible-star-rating'
 
-export default function ProductDetailsComp({productDetails}:{productDetails:ProductDetails[] }) {
+export default function ProductDetailsComp({productDetails}:{productDetails:ProductDetails }) {
   return (
     <div className='flex justify-between items-center'>
        <div className='w-full md:w-1/2'>

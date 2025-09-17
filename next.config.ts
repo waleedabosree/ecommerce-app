@@ -1,22 +1,19 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-   images: {
+  images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'ecommerce.routemisr.com',
-        port: '',
-        pathname: '/Route-Academy-categories/**',
-        search: '',
+        protocol: "https",
+        hostname: "ecommerce.routemisr.com",
+        port: "",
+        pathname: "/Route-Academy-categories/**",
       },
-       {
-        protocol: 'https',
-        hostname: 'ecommerce.routemisr.com',
-        port: '',
-        pathname: '/Route-Academy-Products/**',
-        search: '',
+      {
+        protocol: "https",
+        hostname: "ecommerce.routemisr.com",
+        port: "",
+        pathname: "/Route-Academy-products/**", // 👈 lowercase "products"
       },
     ],
   },

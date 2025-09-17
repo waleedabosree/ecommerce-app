@@ -9,6 +9,8 @@ export default  async function Home() {
   const response = await getCatagories();
   const data = response?.data;
   const productsResult = await getProducts();
+  console.log("productsResult");
+  console.log(productsResult);
   const products = productsResult ? productsResult.data : [];
    
   return (

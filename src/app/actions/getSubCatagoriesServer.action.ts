@@ -1,4 +1,4 @@
-// app/actions/catagories.server.ts
+
 "use server";
 import axios from "axios";
 import { Catagory } from "@/app/types/catagory.model";

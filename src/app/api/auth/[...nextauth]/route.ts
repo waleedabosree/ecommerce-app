@@ -2,7 +2,7 @@ import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from "next-auth/providers/credentials"
 import Email from 'next-auth/providers/email';
 
-export const options :NextAuthOptions={
+export const OPTIONS :NextAuthOptions={
     providers: [
   CredentialsProvider({
     name: 'Credentials',
@@ -41,5 +41,5 @@ export const options :NextAuthOptions={
       secret: process.env.NEXTAUTH_SECRET!,
     }
 
-const handler=NextAuth(options)
+const handler=NextAuth(OPTIONS)
  export { handler as GET, handler as POST };

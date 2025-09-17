@@ -9,6 +9,7 @@ import {
 import { ShoppingCart } from 'lucide-react';
 import { Heart } from 'lucide-react';
 import { signOut, useSession } from "next-auth/react";
+import { Badge } from "@/components/ui/badge"
 export function Navbar() {
   const session = useSession();
   console.log("Session data in Navbar:", session);
@@ -27,9 +28,20 @@ export function Navbar() {
     <NavigationMenuItem> <Link href="/cat">Categories</Link> </NavigationMenuItem>
   </NavigationMenuList>
 
-   <NavigationMenuList className="font-bold gap-5">
-    <NavigationMenuItem> <button> <ShoppingCart></ShoppingCart> </button> </NavigationMenuItem>
-    <NavigationMenuItem> <button> <Heart></Heart> </button> </NavigationMenuItem>
+   <NavigationMenuList className="font-bold gap-2">
+    <NavigationMenuItem> 
+      <button className="relative">
+       <Badge variant="default" >11</Badge>
+       <ShoppingCart/>
+      </button> 
+       </NavigationMenuItem>
+       
+    <NavigationMenuItem> 
+       <button className="relative">
+       <Badge variant="default" >0</Badge>
+       <Heart/>
+      </button> 
+    </NavigationMenuItem>
     {session?.data ? 
     <NavigationMenuItem> <Link href="/logout" onClick={() => signOut({callbackUrl:"/login"})}>Logout</Link> </NavigationMenuItem>
     : 

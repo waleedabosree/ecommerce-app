@@ -15,6 +15,12 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/Route-Academy-products/**", // 👈 lowercase "products"
       },
+        {
+        protocol: "https",
+        hostname: "ecommerce.routemisr.com",
+        port: "",
+        pathname: "/Route-Academy-brands/**", // 👈 lowercase "products"
+      },      
     ],
   },
 };

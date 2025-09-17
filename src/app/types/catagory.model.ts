@@ -1,5 +1,5 @@
 
-export interface Catagories{
+export interface Catagory{
     createdAt:string;
     image:string;
     name:string;

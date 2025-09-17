@@ -1,4 +1,4 @@
-import { Catagories } from './catagory.modle';
+import { Catagories } from './catagory.model';
 export interface Product{
     sold:number,
     images:string[],

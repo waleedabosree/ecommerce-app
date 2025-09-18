@@ -1,5 +1,6 @@
 
-export interface Catagories{
+
+export interface Brand{
     createdAt:string;
     image:string;
     name:string;

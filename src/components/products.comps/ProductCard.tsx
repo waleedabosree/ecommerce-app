@@ -8,14 +8,17 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Products } from '@/app/types/product.model'
+
+import { Product } from '@/app/types/product.model'
 import Image from 'next/image'
-import StarRating from '../ui/StarRating'
+
+
 import { Heart, ShoppingCart, ZoomIn } from 'lucide-react'
 import Zoom from 'next-auth/providers/zoom'
 import Link from 'next/link'
+import { StarRating } from 'react-flexible-star-rating'
 
-export default function ProductCard({product}:{product:Products[]} ) {
+export default function ProductCard({product}:{product:Product} ) {
   return (
     <div>
   <Card className="relative group overflow-hidden">
@@ -27,7 +30,7 @@ export default function ProductCard({product}:{product:Products[]} ) {
             <Heart/>
             </button>
         <button className='px-2 py-2 bg-slate-200 text-black hover:text-blue-700 cursor-pointer'>
-             <Link href={"/products/${product._id}"} >
+             <Link href={`/products/${product._id}`} >
                 <ZoomIn/>
              </Link>
             </button>

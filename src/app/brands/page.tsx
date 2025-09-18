@@ -1,13 +1,17 @@
-'use client'
 
-import { useSession } from "next-auth/react";
+import React from "react";
+import { getBrands } from "../actions/brand.action";
+import BrandGridClient from "@/components/brand-comps/brandGridClient";
 
-export default function BrandPage() {
-  // const session = useSession();
-  // console.log("Session data in BrandPage:", session);
+export default async function BrandPage() {
+  const response = await getBrands();
+  const brands = response?.data || [];
+
   return (
-    <div>
-       <h2>Hello from</h2>
+    <div className="container mx-auto py-10">
+      <BrandGridClient initialBrands={brands} />
     </div>
   );
 }
+
+

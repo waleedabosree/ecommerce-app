@@ -1,6 +1,6 @@
 "use client"
   import React from 'react'
-  import { Catagories } from '@/app/types/catagory.modle'
+  import { Catagories } from '@/app/types/catagory.model'
   import { Swiper, SwiperSlide } from 'swiper/react'
   
   // Import Swiper styles

@@ -1,4 +1,3 @@
-
 import { Product } from '@/app/types/product.model'
 import React from 'react'
 import ProductCard from './ProductCard'

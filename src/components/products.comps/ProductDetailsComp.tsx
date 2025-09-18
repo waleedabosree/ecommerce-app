@@ -1,5 +1,6 @@
 "use client"
 import { addProductToCart } from '@/app/actions/cart.action'
+import { useCart } from '@/app/context/CartContext'
 import { ProductDetails } from '@/app/types/productDetails.model'
 import React from 'react'
 import { StarRating } from 'react-flexible-star-rating'

@@ -1,5 +1,6 @@
 "use client";
 import { removeProduct, updateProduct } from "@/app/actions/cart.action";
+import { useCart } from "@/app/context/CartContext";
 import {
   Table,
   TableBody,
@@ -42,7 +43,7 @@ export function TableCart() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {cartDetails?.data.products.map((product)=><TableRow key={product._id}>
+          {cartDetails?.data?.products.map((product)=><TableRow key={product._id}>
             <TableCell className="font-medium text-center p-3">
               <div className="flex text-center items-center gap-4">
                 <div className="relative">

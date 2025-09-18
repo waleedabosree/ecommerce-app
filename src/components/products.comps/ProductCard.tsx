@@ -17,19 +17,27 @@ import { Heart, ShoppingCart, ZoomIn } from 'lucide-react'
 import Zoom from 'next-auth/providers/zoom'
 import Link from 'next/link'
 import { StarRating } from 'react-flexible-star-rating'
+import { addProductToCart } from '@/app/actions/cart.action'
+import toast from 'react-hot-toast'
 
 export default function ProductCard({product}:{product:Product} ) {
+  const {getCartDetails} = useCart()
+  async function handleAddToCart (ProductId:string) {
+    const response = await addProductToCart(ProductId);
+    toast.success(response?.message)
+    await getCartDetails()
+  }
   return (
     <div>
   <Card className="relative group overflow-hidden">
     <div className='absolute z-1 flex flex-col gap-3 top-[150px] right-[-100] group-hover:right-0 transition-all duration-500'> 
-        <button className='px-2 py-2 bg-slate-200 text-black hover:text-blue-700 cursor-pointer'>
+        <button onClick={()=>handleAddToCart(product._id)} className='px-2 py-2 bg-slate-200 text-black hover:text-blue-700 cursor-pointer'>
             <ShoppingCart/>
             </button>
         <button className='px-2 py-2 bg-slate-200 text-black hover:text-blue-700 cursor-pointer'>
             <Heart/>
             </button>
-        <button className='px-2 py-2 bg-slate-200 text-black hover:text-blue-700 cursor-pointer'>
+        <button  className='px-2 py-2 bg-slate-200 text-black hover:text-blue-700 cursor-pointer'>
              <Link href={`/products/${product._id}`} >
                 <ZoomIn/>
              </Link>

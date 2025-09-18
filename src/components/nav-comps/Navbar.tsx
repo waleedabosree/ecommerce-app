@@ -10,8 +10,12 @@ import { ShoppingCart } from 'lucide-react';
 import { Heart } from 'lucide-react';
 import { signOut, useSession } from "next-auth/react";
 import { Badge } from "@/components/ui/badge"
+import { useCart } from "@/app/context/CartContext";
 export function Navbar() {
   const session = useSession();
+  const{cartDetails} =useCart();
+  console.log(cartDetails,"navbar")
+
   console.log("Session data in Navbar:", session);
   return (
     <div>
@@ -31,7 +35,8 @@ export function Navbar() {
    <NavigationMenuList className="font-bold gap-2">
     <NavigationMenuItem> 
       <button className="relative">
-       <Badge variant="default" >11</Badge>
+        {cartDetails?.numOfCartItems && cartDetails}
+       x
        <ShoppingCart/>
       </button> 
        </NavigationMenuItem>

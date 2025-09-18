@@ -1,9 +1,18 @@
 "use client"
+import { addProductToCart } from '@/app/actions/cart.action'
 import { ProductDetails } from '@/app/types/productDetails.model'
 import React from 'react'
 import { StarRating } from 'react-flexible-star-rating'
+import toast from 'react-hot-toast'
 
 export default function ProductDetailsComp({productDetails}:{productDetails:ProductDetails }) {
+      const {getCartDetails} = useCart()
+  async function handleAddToCart (ProductId:string) {
+    const response = await addProductToCart(ProductId);
+    toast.success(response?.message)
+    await getCartDetails()
+
+
   return (
     <div className='flex justify-between items-center'>
        <div className='w-full md:w-1/2'>
@@ -30,7 +39,7 @@ export default function ProductDetailsComp({productDetails}:{productDetails:Prod
                 </span>
             </div>
             </div> 
-            <button className='px-5 py-3 bg-blue-700 text-white font-bold rounded-lg hover:bg-blue-800 transition-all duration-300' >
+            <button onClick={()=>handleAddToCart(productDetails._id)} className='px-5 py-3 bg-blue-700 text-white font-bold rounded-lg hover:bg-blue-800 transition-all duration-300 cursor-pointer' >
                  + Add To Cart
                 </button>    
        </div>

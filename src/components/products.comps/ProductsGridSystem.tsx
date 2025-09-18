@@ -3,8 +3,10 @@ import { Product } from '@/app/types/product.model'
 import React from 'react'
 import ProductCard from './ProductCard'
 
-export default function ProductsGridSystem({ products }: { products: Product[] }) {
+
+export default  function ProductsGridSystem({ products }: { products: Product[] }) {
   console.log(products, "Grid products")
+  
   return (
     <div className="container mx-auto">
       <h2 className="text-4xl text-start tracking-tighter font-extrabold my-7">Products?</h2>

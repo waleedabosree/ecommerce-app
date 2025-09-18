@@ -16,19 +16,17 @@ export default function RegisterPage() {
     rePassword: string;
     phoneNumber: string;
   }
+
   const {register, handleSubmit, formState: { errors }}= useForm<Inputs>();
   async function onSubmit(values: Inputs){
    try {
-    debugger;
       const response=await axios.post("https://ecommerce.routemisr.com/api/v1/auth/signup", values);
-      if(response.data.message==="success"){
-        console.log("User registered successfully");
+      if(response.data.message==="success"){        
         router.push("/login");
       }
       setErrorMsg(null);
    } catch (error: unknown) {
-      if (axios.isAxiosError(error)) {
-        console.log("Axios error:", error.response?.data?.message || error.message);
+      if (axios.isAxiosError(error)) {        
         const errorMessage= error.response?.data?.errors?.msg ? error.response?.data?.errors?.msg  : error.response?.data?.message;
         setErrorMsg(errorMessage || "An error occurred");
       }

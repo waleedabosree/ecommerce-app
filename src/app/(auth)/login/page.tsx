@@ -1,11 +1,11 @@
-'use client';
-
+"use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+
 
 export default function LoginPage() {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -16,20 +16,22 @@ export default function LoginPage() {
     password: string;
   }
 
-  const { register, handleSubmit, formState: { errors } } = useForm<Inputs>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>();
 
   async function onSubmit(values: Inputs) {
-    setErrorMsg(null); // clear previous error
+    setErrorMsg(null); 
     const response = await signIn("credentials", {
-      redirect: false,   // very important for custom login page
+      redirect: false, 
       email: values.email,
-      password: values.password
+      password: values.password,
     });
 
-    if (response?.ok) 
-      router.push('/');
-    else if (response?.error) 
-      setErrorMsg(response.error); 
+    if (response?.ok) router.push("/");
+    else if (response?.error) setErrorMsg(response.error);
   }
 
   return (
@@ -44,7 +46,9 @@ export default function LoginPage() {
           className="p-5 my-5"
           {...register("email", { required: "Email is required" })}
         />
-        {errors.email && <span className="text-red-500">{errors.email.message}</span>}
+        {errors.email && (
+          <span className="text-red-500">{errors.email.message}</span>
+        )}
 
         <Input
           type="password"
@@ -52,9 +56,13 @@ export default function LoginPage() {
           className="p-5 my-5"
           {...register("password", { required: "Password is required" })}
         />
-        {errors.password && <span className="text-red-500">{errors.password.message}</span>}
+        {errors.password && (
+          <span className="text-red-500">{errors.password.message}</span>
+        )}
 
-        <Button type="submit" className="px-7 py-7">Login</Button>
+        <Button type="submit" className="px-7 py-7">
+          Login
+        </Button>
       </form>
     </div>
   );

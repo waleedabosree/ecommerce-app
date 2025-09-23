@@ -3,6 +3,7 @@ import { SessionProvider } from "next-auth/react";
 import CartContextProvider from "./CartContext";
 import { Toaster } from "react-hot-toast";
 import { Provider } from 'react-redux'
+import { store } from "@/lib/store";
 
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {

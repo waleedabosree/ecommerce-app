@@ -9,6 +9,7 @@ import toast from 'react-hot-toast'
 export default function ProductDetailsComp({productDetails}:{productDetails:ProductDetails }) {
       const {getCartDetails} = useCart()
   async function handleAddToCart (ProductId:string) {
+    debugger;
     const response = await addProductToCart(ProductId);
     toast.success(response?.message)
     await getCartDetails()

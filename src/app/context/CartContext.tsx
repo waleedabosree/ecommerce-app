@@ -1,29 +1,29 @@
-"use client"
+"use client";
 import { createContext, useContext, useEffect, useState } from "react";
 import { CartData } from "../types/cart.model";
 import { getUserCart } from "../actions/cart.action";
 
-interface CartContextType{
-    cartDetails:CartData |null;
-    getCartDetails?:()=>Promise<void>;
-    setcartDetails:(cart:CartData|null)=>void;
+interface CartContextType {
+  cartDetails: CartData | null;
+  getCartDetails: () => Promise<void>;
+  setCartDetails: (cart: CartData | null) => void;
 }
 
-const cartcontext = createContext(<CartContextType>{
-     cartDetails:null;
-     getCartDetails:async()=>{},
-        setcartDetails:()=>{}
-    });
-
-
+// ✅ Create Context properly
+const CartContext = createContext<CartContextType>({
+  cartDetails: null,
+  getCartDetails: async () => {},
+  setCartDetails: () => {},
+});
 
 export default function CartContextProvider({ children }: { children: React.ReactNode }) {
   const [cartDetails, setCartDetails] = useState<CartData | null>(null);
 
+  // ✅ Fetch user cart
   async function getCartDetails() {
     const response = await getUserCart();
     console.log(response?.data, "carttt");
-    setCartDetails(response?.data);
+    setCartDetails(response?.data ?? null);
   }
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function CartContextProvider({ children }: { children: React.Reac
   }, []);
 
   return (
-    <CartContext.Provider value={{ cartDetails, getCartDetails }}>
+    <CartContext.Provider value={{ cartDetails, getCartDetails, setCartDetails }}>
       {children}
     </CartContext.Provider>
   );

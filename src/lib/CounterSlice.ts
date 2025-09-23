@@ -1,29 +1,31 @@
-import { count } from 'console';
-import { counterSlice } from './../../node_modules/@reduxjs/toolkit/src/listenerMiddleware/tests/listenerMiddleware.withTypes.test-d';
+import { createSlice } from "@reduxjs/toolkit";
 
 export interface CounterState {
-    counter:number;
+  counter: number;
 }
 
-const initialState = { 
-    counter:0;
+const initialState: CounterState = {
+  counter: 0,
 };
 
 export const counterSlice = createSlice({
-    name: 'counter',
-    initialState,
-    reducers: {
-        increment: (state) => {
-            state.counter ++;
-        }
-        decrement: (state) => {
-            state.counter --;
-        }
-        reset: (state) => {
-            state.counter =0;
-        }
+  name: "counter",
+  initialState,
+  reducers: {
+    increment: (state) => {
+      state.counter++;
     },
+    decrement: (state) => {
+      state.counter--;
+    },
+    reset: (state) => {
+      state.counter = 0;
+    },
+  },
 });
 
-export const {increment.decrement} counterSlice.actions
-export default counterSlice.reducer
+// ✅ Correct actions export
+export const { increment, decrement, reset } = counterSlice.actions;
+
+// ✅ Reducer export
+export default counterSlice.reducer;

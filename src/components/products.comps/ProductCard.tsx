@@ -24,17 +24,9 @@ import { useCart } from '@/app/context/CartContext'
 export default function ProductCard({product}:{product:Product} ) {
   const {getCartDetails} = useCart()
   async function handleAddToCart (ProductId:string) {
-    debugger;
     const response = await addProductToCart(ProductId);
-    // toast.success(response?.message)
-    // await getCartDetails()
-
-       if (response?.status === 200) {
-    toast.success(response.message);
-    await getCartDetails();
-  } else {
-    toast.error(response?.message || "Failed to add product");
-  }
+    toast.success(response?.message)
+    await getCartDetails()
   }
   return (
     <div>

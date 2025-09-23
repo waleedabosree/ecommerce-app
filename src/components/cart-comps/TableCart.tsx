@@ -14,7 +14,7 @@ import { Badge } from "lucide-react";
 import Image from "next/image";
 import toast from "react-hot-toast";
 import { Label } from "@/components/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+// import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import Link from "next/link";
 export function TableCart() {
   const{cartDetails , getCartDetails} =useCart();
@@ -51,27 +51,27 @@ export function TableCart() {
             <TableCell className="font-medium text-center p-3">
               <div className="flex text-center items-center gap-4">
                 <div className="relative">
-                  <Badge onClick={()=>removeProductFromCart(product.product._id)} className="absolute top-[-10px] left-[-10px] cursor-pointer">
+                  <Badge onClick={()=>removeProductFromCart(product._id)} className="absolute top-[-10px] left-[-10px] cursor-pointer">
                     x
                   </Badge>
                   <Image
-                    src={product.product.imageCover}
+                    src={product.product?.imageCover}
                     alt="Product Image"
                     width="60"
                     height="60"
                   />
                 </div>
-                <p>{product.product.title.splite(" ").slice(0,2).join(" ")}</p>
+                <p>{product.product?.title.split(" ").slice(0,2).join(" ")}</p>
               </div>
             </TableCell>
             <TableCell className="text-center p-3">{product.price}EGP</TableCell>
             <TableCell>
               <div className="flex text-center items-center justify-center gap-2 p-3">
-                <button onClick={()=>updateCartProducts(product.product._id,product.count+1)} className="border-1 border-slate-500 rounded-md px-2 py-1 cursor-pointer ">
+                <button onClick={()=>updateCartProducts(product.product?._id,product.count+1)} className="border-1 border-slate-500 rounded-md px-2 py-1 cursor-pointer ">
                   +
                 </button>
                 <p>{product.count}</p>
-                <button onClick={()=>updateCartProducts(product.product._id,product.count-1)} className="border-1 border-slate-500 rounded-md px-2 py-1 cursor-pointer ">
+                <button onClick={()=>updateCartProducts(product.product?._id,product.count-1)} className="border-1 border-slate-500 rounded-md px-2 py-1 cursor-pointer ">
                   -
                 </button>
               </div>
@@ -81,7 +81,7 @@ export function TableCart() {
           
           <TableRow className="bg-slate-200">
             <TableCell className="text-center p-6">Total Price</TableCell>
-            <TableCell className="text-center p-6" colSpan={2}>{cartDetails?.data?.totalCartPrice}EGP</TableCell>
+            <TableCell className="text-center p-6" colSpan={2}>{cartDetails?.data?.totleCartPrice}EGP</TableCell>
             <TableCell className="text-center p-6">
                 <button className="px-10 py-5 bg-black text-white rouneded-md">
                   <Link href={"/checkout"}>

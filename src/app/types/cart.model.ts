@@ -1,11 +1,11 @@
 import { Product } from '@/app/types/product.model';
-import { Brand, category, subcategory } from './productDetails.model';
-export interface CartData{
-    _id:string,
-    name:string,
-    slug:string,
-    image:string
-}
+import { Brand } from './productDetails.model';
+// export interface CartData{
+//     _id:string,
+//     name:string,
+//     slug:string,
+//     image:string
+// }
 export interface category{
      _id:string,
     name:string,
@@ -22,7 +22,7 @@ export interface sCartProduct{
      _id:string,
      count:number,
      price:number
-     Product:{
+     product:{
         _id:string,
         id:string,
         title:string,
@@ -41,10 +41,11 @@ export interface CartData{
         _id:string;
         cartOwner:string;
         totleCartPrice:number;
-       
-        crearedAt:string;
-        updatedAt:string;
-        _v:number
+        products:sCartProduct[];
     }
+    crearedAt:string;
+    updatedAt:string;
+    _v:number
      numOfCartItems:number;
+     totalCartPrice:number;
 }

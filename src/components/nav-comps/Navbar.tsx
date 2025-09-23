@@ -35,8 +35,8 @@ export function Navbar() {
    <NavigationMenuList className="font-bold gap-2">
     <NavigationMenuItem> 
       <button className="relative">
-        {cartDetails?.numOfCartItems && cartDetails}
-       x
+        {cartDetails && cartDetails?.numOfCartItems}
+         x
        <ShoppingCart/>
       </button> 
        </NavigationMenuItem>

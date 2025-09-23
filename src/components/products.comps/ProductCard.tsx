@@ -1,4 +1,4 @@
-"use client"
+ "use client"
 import React from 'react'
 import {
   Card,
@@ -24,9 +24,17 @@ import { useCart } from '@/app/context/CartContext'
 export default function ProductCard({product}:{product:Product} ) {
   const {getCartDetails} = useCart()
   async function handleAddToCart (ProductId:string) {
+    debugger;
     const response = await addProductToCart(ProductId);
-    toast.success(response?.message)
-    await getCartDetails()
+    // toast.success(response?.message)
+    // await getCartDetails()
+
+       if (response?.status === 200) {
+    toast.success(response.message);
+    await getCartDetails();
+  } else {
+    toast.error(response?.message || "Failed to add product");
+  }
   }
   return (
     <div>

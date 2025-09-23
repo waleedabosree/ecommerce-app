@@ -4,6 +4,7 @@ import axios from "axios";
 
 async function getCatagories() {
     try{
+        debugger;
         const response =await axios.get("https://ecommerce.routemisr.com/api/v1/categories");
         debugger
          return{

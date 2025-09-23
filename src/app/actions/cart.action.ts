@@ -3,19 +3,18 @@
 import { Product } from '@/app/types/product.model'; 
 import { getUserToken } from "@/lib/token.utils";
 import axios from "axios";
+import { CartData } from '../types/cart.model';
 
 async function getUserCart() {
     try {
         const token = await getUserToken();
-
         const response = await axios.get("https://ecommerce.routemisr.com/api/v1/cart", {
             headers: {
                 token: token as string,
             }
         });
-
         return {
-            data: response?.data.data,
+            data: response?.data,
             status: response.status,
             message: response?.data.message,
         };
@@ -30,15 +29,10 @@ async function getUserCart() {
     }
 }
 
-async function addProductToCart(productId: string) {
+export async function addProductToCart(productId: string) {
     try {
         const token = await getUserToken();
-
-        const response = await axios.post("https://ecommerce.routemisr.com/api/v1/cart", { productId }, {
-            headers: {
-                token: token as string,
-            }
-        });
+        const response = await axios.post("https://ecommerce.routemisr.com/api/v1/cart", { productId }, {headers: {token: token as string}});
 
         console.log(response.data, "add to cart");
         return {
@@ -111,4 +105,4 @@ async function updateProduct(productId: string, count: number) {
     }
 }
 
-export { getUserCart, addProductToCart, removeProduct, updateProduct };
+export { getUserCart, removeProduct, updateProduct };

@@ -9,11 +9,11 @@ import toast from 'react-hot-toast'
 export default function ProductDetailsComp({productDetails}:{productDetails:ProductDetails }) {
       const {getCartDetails} = useCart()
   async function handleAddToCart (ProductId:string) {
-    debugger;
+    debugger;        
     const response = await addProductToCart(ProductId);
-    toast.success(response?.message)
-    await getCartDetails()
-
+     toast.success(response?.message)
+     await getCartDetails()
+  }
 
   return (
     <div className='flex justify-between items-center'>

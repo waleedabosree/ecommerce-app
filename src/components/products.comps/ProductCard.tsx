@@ -19,6 +19,7 @@ import Link from 'next/link'
 import { StarRating } from 'react-flexible-star-rating'
 import { addProductToCart } from '@/app/actions/cart.action'
 import toast from 'react-hot-toast'
+import { useCart } from '@/app/context/CartContext'
 
 export default function ProductCard({product}:{product:Product} ) {
   const {getCartDetails} = useCart()

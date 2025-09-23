@@ -1,7 +1,7 @@
 "use client"
-import { Children, createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { CartData } from "../types/cart.model";
-
+import { getUserCart } from "../actions/cart.action";
 
 interface CartContextType{
     cartDetails:CartData |null;
@@ -17,30 +17,30 @@ const cartcontext = createContext(<CartContextType>{
 
 
 
-export default function CartContextProvider({Children}:{Children:React.ReactNode}){
-    const [cartDetails, setcartDetails] = useState(null)
-    async function getCartDetails() {
-        const response = await getUserCart()
-        console.log(response.data,"carttt")
-         setCartDetails(response.data)
-    }
-    useEffect(()=>{
-        getCartDetails()
+export default function CartContextProvider({ children }: { children: React.ReactNode }) {
+  const [cartDetails, setCartDetails] = useState<CartData | null>(null);
 
-    },[])
-     
+  async function getCartDetails() {
+    const response = await getUserCart();
+    console.log(response?.data, "carttt");
+    setCartDetails(response?.data);
+  }
 
-    return(
+  useEffect(() => {
+    getCartDetails();
+  }, []);
 
-        <cartcontext.Provider value={{cartDetails,setcartDetails,getCartDetails}}>
-       {Children}
-    </cartcontext.Provider>
-    ) 
-    
+  return (
+    <CartContext.Provider value={{ cartDetails, getCartDetails }}>
+      {children}
+    </CartContext.Provider>
+  );
 }
 
-export function useCart(){
-
-    const myContext = useContext(cartcontext);
-    return myContext
+export function useCart() {
+  const context = useContext(CartContext);
+  if (!context) {
+    throw new Error("useCart must be used within a CartContextProvider");
+  }
+  return context;
 }

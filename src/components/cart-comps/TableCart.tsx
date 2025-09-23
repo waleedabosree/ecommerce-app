@@ -12,6 +12,9 @@ import {
 import { Badge } from "lucide-react";
 import Image from "next/image";
 import toast from "react-hot-toast";
+import { Label } from "@/components/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import Link from "next/link";
 export function TableCart() {
   const{cartDetails , getCartDetails} =useCart();
 
@@ -31,7 +34,8 @@ export function TableCart() {
 
 
   return (
-    <div className="w-3/4 mx-auto">
+    <>
+    {cartDetails?<div className="w-3/4 mx-auto">
       <Table>
         <TableHeader>
           <TableRow>
@@ -79,12 +83,16 @@ export function TableCart() {
             <TableCell className="text-center p-6" colSpan={2}>{cartDetails?.data?.totalCartPrice}EGP</TableCell>
             <TableCell className="text-center p-6">
                 <button className="px-10 py-5 bg-black text-white rouneded-md">
-                    Checkout
+                  <Link href={"/checkout"}>
+                      Checkout
+                  </Link>  
                 </button>
             </TableCell>
           </TableRow>
         </TableBody>
       </Table>
-    </div>
+    </div>: <h2 className="text-center text-3xl">you need to add products to cart</h2> }
+
+    </>
   );
 }

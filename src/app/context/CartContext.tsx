@@ -1,3 +1,4 @@
+"use client"
 import { Children, createContext, useEffect, useState } from "react";
 import { CartData } from "../types/cart.model";
 
@@ -5,12 +6,14 @@ import { CartData } from "../types/cart.model";
 interface CartContextType{
     cartDetails:CartData |null;
     getCartDetails?:()=>Promise<void>;
+    setcartDetails:(cart:CartData|null)=>void;
 }
 
 const cartcontext = createContext(<CartContextType>{
      cartDetails:null;
-     getCartDetails:async()=>{}
-    })
+     getCartDetails:async()=>{},
+        setcartDetails:()=>{}
+    });
 
 
 
@@ -29,7 +32,7 @@ export default function CartContextProvider({Children}:{Children:React.ReactNode
 
     return(
 
-        <cartcontext.Provider value={{cartDetails,getCartDetails}}>
+        <cartcontext.Provider value={{cartDetails,setcartDetails,getCartDetails}}>
        {Children}
     </cartcontext.Provider>
     ) 

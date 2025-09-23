@@ -1,5 +1,6 @@
-import { Product } from '@/app/types/product.model';
 "use server"
+import { Product } from '@/app/types/product.model';
+
 import { getUserToken } from "@/lib/token.utils";
 import axios from "axios";
 import { count } from 'console';
